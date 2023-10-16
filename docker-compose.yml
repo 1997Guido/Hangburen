@@ -14,7 +14,7 @@ services:
     image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: a3b6c9
-      MYSQL_DATABASE: portefolioSite
+      MYSQL_DATABASE: Hangman
     ports:
       - 3306:3306
     networks:
