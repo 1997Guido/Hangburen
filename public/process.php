@@ -1,9 +1,9 @@
 <?php
 // Database connection using PDO
 $servername = "mariadb";
-$username = "Hangman";
+$username = "root";
 $password = "a3b6c9";
-$dbname = "woord";
+$dbname = "Hangman";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
