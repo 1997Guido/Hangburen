@@ -67,7 +67,9 @@ function highScoreAlgorithm($difficulty, $timeInSeconds, $averageErrors) {
     $wordCompletionBonus = 10 * 100;  // 10 words * 100 points each
     $timePenalty = $timeInSeconds;
     $errorPenalty = 20 * $averageErrors * 10;  // 20 points * average errors * 10 words
-
+    // Calculate high score
+    // High Score = (Difficulty Factor * Word Completion Bonus) - (Time Penalty + Error Penalty)
+    // Example: High Score = (1.5 * 1000) - (300 + (20 * 2 * 10))
     $highScore = ($difficultyFactors[$difficulty] * $wordCompletionBonus) - ($timePenalty + $errorPenalty);
 
     return $highScore;

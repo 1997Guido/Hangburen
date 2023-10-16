@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     newGame();
   });
-  
+  let words = [];
   let word = "";
   let maskedWord = "";
   let attempts = 0;
@@ -10,41 +10,61 @@ document.addEventListener('DOMContentLoaded', (event) => {
   let startTime;
   let totalTime = 0;
   
-  function newGame() {
-    if (gameCount === 3) {
-      alert(`Game Over! Total time: ${totalTime} seconds. Total errors: ${totalAttempts}`);
-      gameCount = 0;
-      totalAttempts = 0;
-      totalTime = 0;
-    }
-    fetch('get_word.php')
-      .then(response => response.json())
-      .then(data => {
-        word = data.word.toUpperCase();
-        maskedWord = "_".repeat(word.length);
-        document.getElementById("wordToGuess").textContent = maskedWord;
-        generateKeyboard();
-        attempts = 0;
-        startTime = Date.now();
-        gameCount++;
-      });
-  }
-
-  function saveHighScore(username, score) {
-    fetch('save_score.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `username=${username}&score=${score}`
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === "success") {
-        alert("High score saved!");
+  async function newGame() {
+    try {
+      if (gameCount === 3) {
+        alert(`Game Over! Total time: ${totalTime} seconds. Total errors: ${totalAttempts}`);
+        gameCount = 0;
+        totalAttempts = 0;
+        totalTime = 0;
       }
-    });
-  }
+  
+      const response = await fetch('get_word.php');
+      const data = await response.json();
+  
+      words = data.words;
+      const randomIndex = Math.floor(Math.random() * 2); // 0 or 1
+      word = words[randomIndex];
+      words.splice(randomIndex, 1);
+      untranslatedWord = words[0];
+      maskedWord = "_".repeat(word.length);
+      
+      document.getElementById("wordToGuess").textContent = maskedWord;
+      document.getElementById("untranslatedWord").textContent = shownWord;
+
+      generateKeyboard();
+      attempts = 0;
+      startTime = Date.now();
+      gameCount++;
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  }  
+  
+
+  async function saveHighScore(username, score) {
+    try {
+      const response = await fetch('save_score.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `username=${username}&score=${score}`
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }      
+      if (response.status === 201) {
+        alert("High score saved!");
+      } else {
+        alert("Failed to save high score.");
+      }
+    } catch (error) {
+      console.error(`There was a problem with the fetch operation: ${error}`);
+      alert("Failed to save high score due to a network error.");
+    }
+  }  
   
   
   function generateKeyboard() {

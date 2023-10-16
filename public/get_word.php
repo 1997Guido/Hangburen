@@ -1,9 +1,15 @@
 <?php
 // Sample array, you can add German and Dutch words here.
-$words = array("APFEL", "BANANE", "KEREN", "AUTO");
+$all_words = array(
+    "dutchword1" => "germanword1",
+    "dutchword2" => "germanword2",
+)
+$random_dutch_word = array_rand($words);
+$german_word = $words[$random_dutch_word];
 
-// Randomly select a word
-$random_key = array_rand($words);
+$words = [$random_dutch_word, $german_word]
 
-echo json_encode(array("word" => $words[$random_key]));
+
+
+echo json_encode(array("words" => $words));
 ?>
