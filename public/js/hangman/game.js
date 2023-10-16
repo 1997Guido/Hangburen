@@ -5,17 +5,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
   let word = "";
   let maskedWord = "";
   let attempts = 0;
+  let totalAttempts = 0;
+  let gameCount = 0;
+  let startTime;
+  let totalTime = 0;
   
   function newGame() {
+    if (gameCount === 3) {
+      alert(`Game Over! Total time: ${totalTime} seconds. Total errors: ${totalAttempts}`);
+      gameCount = 0;
+      totalAttempts = 0;
+      totalTime = 0;
+    }
     fetch('get_word.php')
-    .then(response => response.json())
-    .then(data => {
-      word = data.word.toUpperCase();
-      maskedWord = "_".repeat(word.length);
-      document.getElementById("wordToGuess").textContent = maskedWord;
-      generateKeyboard();
-      attempts = 0;
-    });
+      .then(response => response.json())
+      .then(data => {
+        word = data.word.toUpperCase();
+        maskedWord = "_".repeat(word.length);
+        document.getElementById("wordToGuess").textContent = maskedWord;
+        generateKeyboard();
+        attempts = 0;
+        startTime = Date.now();
+        gameCount++;
+      });
   }
 
   function saveHighScore(username, score) {
@@ -61,6 +73,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
     if (!correctGuess) {
       attempts++;
+      totalAttempts++;
       showHangman(attempts);
     }
   
@@ -68,6 +81,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("wordToGuess").textContent = maskedWord;
   
     if (!maskedWord.includes("_")) {
+      const endTime = Date.now();
+      totalTime += (endTime - startTime) / 1000; // Convert to seconds
       alert("You won!");
       newGame();
     }
