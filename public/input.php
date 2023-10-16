@@ -5,18 +5,12 @@
 </head>
 <body>
     <form action="process.php" method="post">
-        <label for="Dutch-Word">Enter a Word:</label>
-        <input type="text" class="word" name="word" id="word" required>
-        <label for="German-Word">Enter a Word:</label>
-        <input type="text" class="word" name="word" id="word" required>
+        <label for="dutch-word">Enter a Dutch Word:</label>
+        <input type="text" class="word" name="dutch_word" id="dutch-word" required>
+        <br>
+        <label for="german-word">Enter a German Word:</label>
+        <input type="text" class="word" name="german_word" id="german-word" required>
         <button type="submit" class="ibutton">Submit</button>
     </form>
 </body>
 </html>
-
-
-
-
-
-
-
