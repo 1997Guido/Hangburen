@@ -1,0 +1,61 @@
+#keyboard button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 18px;
+  }  
+  #hangman {
+    width: 100px;
+    height: 200px;
+    position: relative;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  #head {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 25px;
+    border-radius: 50%;
+  }
+  
+  #body {
+    width: 10px;
+    height: 50px;
+    background-color: black;
+    position: absolute;
+    top: 50px;
+    left: 45px;
+  }
+  
+  #leftArm, #rightArm, #leftLeg, #rightLeg {
+    width: 30px;
+    height: 10px;
+    background-color: black;
+    position: absolute;
+  }
+  
+  #leftArm {
+    top: 55px;
+    left: 15px;
+  }
+  
+  #rightArm {
+    top: 55px;
+    left: 55px;
+  }
+  
+  #leftLeg {
+    top: 100px;
+    left: 15px;
+  }
+  
+  #rightLeg {
+    top: 100px;
+    left: 55px;
+  }
+  

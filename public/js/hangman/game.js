@@ -33,13 +33,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
     });
   }
-  if (!maskedWord.includes("_")) {
-    alert("You won!");
-    let username = prompt("Enter your username to save your high score:");
-    let score = calculateScore(); // Implement your own score calculation logic
-    saveHighScore(username, score);
-    newGame();
-  }
   
   
   function generateKeyboard() {
@@ -55,24 +48,56 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
   function makeGuess(letter) {
     let newMasked = "";
+    let correctGuess = false;
+  
     for (let i = 0; i < word.length; i++) {
       if (word[i] === letter) {
         newMasked += letter;
+        correctGuess = true;
       } else {
         newMasked += maskedWord[i];
       }
     }
   
-    if (newMasked === maskedWord) {
+    if (!correctGuess) {
       attempts++;
-      // Handle failed attempts
-    } else {
-      maskedWord = newMasked;
-      document.getElementById("wordToGuess").textContent = maskedWord;
-      if (!maskedWord.includes("_")) {
-        alert("You won!");
-        newGame();
-      }
+      showHangman(attempts);
+    }
+  
+    maskedWord = newMasked;
+    document.getElementById("wordToGuess").textContent = maskedWord;
+  
+    if (!maskedWord.includes("_")) {
+      alert("You won!");
+      newGame();
     }
   }
+  
+  function showHangman(attempts) {
+    switch (attempts) {
+      case 1:
+        document.getElementById("head").classList.remove("hide");
+        break;
+      case 2:
+        document.getElementById("body").classList.remove("hide");
+        break;
+      case 3:
+        document.getElementById("leftArm").classList.remove("hide");
+        break;
+      case 4:
+        document.getElementById("rightArm").classList.remove("hide");
+        break;
+      case 5:
+        document.getElementById("leftLeg").classList.remove("hide");
+        break;
+      case 6:
+        document.getElementById("rightLeg").classList.remove("hide");
+        alert("Game Over");
+        newGame();
+        break;
+      default:
+        break;
+    }
+  }
+  
   
