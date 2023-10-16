@@ -17,6 +17,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
       attempts = 0;
     });
   }
+
+  function saveHighScore(username, score) {
+    fetch('save_score.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `username=${username}&score=${score}`
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === "success") {
+        alert("High score saved!");
+      }
+    });
+  }
+  if (!maskedWord.includes("_")) {
+    alert("You won!");
+    let username = prompt("Enter your username to save your high score:");
+    let score = calculateScore(); // Implement your own score calculation logic
+    saveHighScore(username, score);
+    newGame();
+  }
+  
   
   function generateKeyboard() {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
