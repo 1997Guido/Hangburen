@@ -13,6 +13,10 @@
     <div class="screen-overlay">
         <div class="game-box">
             <h1>Hangman Game</h1>
+            <div id="untranslatedWord"></div>
+            <div id="playerOneScore"></div>
+            <div id="playerTwoScore"></div>
+            <div id="playerTurn"></div>
             <div id="wordToGuess"></div>
             <div id="hangman">
                 <div id="head" class="hide"></div>
