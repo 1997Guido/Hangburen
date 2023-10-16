@@ -13,3 +13,7 @@ The name "Hangburen" is a blend of "hang" from Hangman, and "buren", the Dutch w
 - **Hangman Gameplay:** Enhance your vocabulary while having fun! Receive a word in Dutch or German and guess its counterpart.
   
 - **Highscores:** Keep track of your progress and compete with others. Who can achieve the highest score?
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE). See the [LICENSE](LICENSE) file for details.
