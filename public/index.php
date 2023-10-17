@@ -11,8 +11,9 @@
 
 <body>
     <div class="screen-overlay">
+        <a href="./login.php" class="return-btn"><img class="icon" src="https://img.icons8.com/material-outlined/24/000000/return.png" /></a>
         <div class="game-box">
-            <h1>Hangman Game</h1>
+            <h1>Hangman</h1>
             <div id="untranslatedWord"></div>
             <div id="playerOneScore"></div>
             <div id="playerTwoScore"></div>
