@@ -12,7 +12,7 @@
 <body>
     <div class="screen-overlay">
         <a href="./login.php" class="return-btn"><img class="icon" src="https://img.icons8.com/material-outlined/24/000000/return.png" /></a>
-        <div class="game-box">
+        <div id="game-box" class="game-box">
             <div class="topcontainer">
                 <h1>Hangman</h1>
                 <div id="whoseTurn"></div>
@@ -42,7 +42,7 @@
             <div id="keyboard"></div>
             <button onclick="newGame()">New Game</button>
         </div>
-        <div class="end-box hide">Javascript needs to insert the winner and scores here after calculating</div>
+        <div id="end-box" class="hide">Javascript needs to insert the winner and scores here after calculating</div>
 
     </div>
 

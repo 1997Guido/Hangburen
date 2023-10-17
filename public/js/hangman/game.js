@@ -35,11 +35,11 @@ let germanPlayerData = {
 };
 
 let playerArray = ["German player", "Dutch player"];
-let turnArray = [];
-let firstTurn = turnArray[Math.floor(Math.random() * turnArray.length)];
+let firstTurn = "";
 let currentTurn = "";
 
 function newGame() {
+  words = [];
   fetch("get_word.php")
     .then((response) => response.json())
     .then((data) => {
@@ -84,7 +84,6 @@ function newGame() {
 function nextTurn() {
     lastTurn = currentTurn;
     if (lastTurn === "Dutch player") {
-      dutchPlayerTurn++;
       gameCount = dutchPlayerTurn + germanPlayerTurn;
       console.log("gamecount is " + gameCount);
       console.log("dutchPlayerTurn is " + dutchPlayerTurn);
@@ -117,12 +116,12 @@ function nextTurn() {
           break;
       }
       newGame();
+      dutchPlayerTurn++;
       hideHangman();
     }}
     if (lastTurn === "German player") {
-      germanPlayerTurn++;
       gameCount = dutchPlayerTurn + germanPlayerTurn;
-      if (gameCount === 6) {
+      if (gameCount > 6) {
         endGame();
         console.log("gamecount is 6 ending game")
         hideGame();
@@ -153,6 +152,7 @@ function nextTurn() {
           break;
       }
       newGame();
+      germanPlayerTurn++;
       hideHangman();
     }}
 }
