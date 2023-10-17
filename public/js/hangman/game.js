@@ -82,20 +82,29 @@ function newGame() {
 }
 
 function nextTurn() {
-    lastTurn = currentTurn;
-    if (lastTurn === "Dutch player") {
-      gameCount = dutchPlayerTurn + germanPlayerTurn;
-      console.log("gamecount is " + gameCount);
-      console.log("dutchPlayerTurn is " + dutchPlayerTurn);
-      console.log("germanPlayerTurn is " + germanPlayerTurn);
-      document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
-      if (gameCount === 6) {
-        endGame();
-        console.log("gamecount is 6 ending game")
-        hideGame();
-      }else{
+  lastTurn = currentTurn;
+
+  if (lastTurn === "Dutch player") {
+    // Increment Dutch player's turn counter
+    dutchPlayerTurn++;
+
+    // Update the total game count
+    gameCount = dutchPlayerTurn + germanPlayerTurn;
+
+    console.log("gamecount is " + gameCount);
+    console.log("dutchPlayerTurn is " + dutchPlayerTurn);
+    console.log("germanPlayerTurn is " + germanPlayerTurn);
+    document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
+
+    // Check if game should end
+    if (gameCount >= 6) {
+      endGame();
+      console.log("gamecount is 6 ending game");
+    } else {
+      // Existing code to handle player data and other things
       const endTime = Date.now();
-      totalTime += (endTime - startTime) / 1000; // Convert to seconds
+      totalTime += (endTime - startTime) / 1000;
+
       switch (dutchPlayerTurn) {
         case 1:
           dutchPlayerData.turnOneTime = totalTime;
@@ -115,22 +124,35 @@ function nextTurn() {
         default:
           break;
       }
+
+      // Start a new game and update UI
       newGame();
-      dutchPlayerTurn++;
       hideHangman();
-    }}
-    if (lastTurn === "German player") {
-      gameCount = dutchPlayerTurn + germanPlayerTurn;
-      if (gameCount > 6) {
-        endGame();
-        console.log("gamecount is 6 ending game")
-      }else{
-      console.log("gamecount is " + gameCount);
-      console.log("dutchPlayerTurn is " + dutchPlayerTurn);
-      console.log("germanPlayerTurn is " + germanPlayerTurn);
-      document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
+    }
+  }
+
+  if (lastTurn === "German player") {
+    // Increment German player's turn counter
+    germanPlayerTurn++;
+
+    // Update the total game count
+    gameCount = dutchPlayerTurn + germanPlayerTurn;
+
+    console.log("gamecount is " + gameCount);
+    console.log("dutchPlayerTurn is " + dutchPlayerTurn);
+    console.log("germanPlayerTurn is " + germanPlayerTurn);
+    document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
+
+    // Check if game should end
+    if (gameCount >= 6) {
+      endGame();
+      console.log("gamecount is 6 ending game");
+      hideGame();
+    } else {
+      // Existing code to handle player data and other things
       const endTime = Date.now();
-      totalTime += (endTime - startTime) / 1000; // Convert to seconds
+      totalTime += (endTime - startTime) / 1000;
+
       switch (germanPlayerTurn) {
         case 1:
           germanPlayerData.turnOneTime = totalTime;
@@ -150,10 +172,12 @@ function nextTurn() {
         default:
           break;
       }
+
+      // Start a new game and update UI
       newGame();
-      germanPlayerTurn++;
       hideHangman();
-    }}
+    }
+  }
 }
 
 function endGame() {
@@ -168,9 +192,14 @@ function endGame() {
     }
   }).then(response => response.json().then(data => {
     console.log(data);
-    hidegame();
+    hideGame();
     }));
 }
+function hideGame() {
+  document.getElementById("game-box").classList.add("hide");
+  document.getElementById("end-box").classList.remove("hide");
+}
+
 
 function generateKeyboard() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
