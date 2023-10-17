@@ -1,13 +1,30 @@
 <?php
-// Database connection parameters
 $servername = "your_server_name";
 $username = "your_db_username";
 $password = "your_db_password";
-$database = "your_database_name";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $conn = new PDO("mysql:host=$servername", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Check if the database exists
+    $dbname = "your_database_name";
+    $checkDbStmt = $conn->prepare("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = :dbname");
+    $checkDbStmt->bindParam(':dbname', $dbname);
+    $checkDbStmt->execute();
+
+    if ($checkDbStmt->rowCount() == 0) {
+        // Create the database if it doesn't exist
+        $createDbStmt = $conn->prepare("CREATE DATABASE $dbname");
+        $createDbStmt->execute();
+        echo "Database created successfully.";
+    } else {
+        echo "Database already exists. Nothing to do.";
+
+        // Connect to the existing database
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
@@ -69,5 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
+// Close the connection
 $conn = null;
 ?>
