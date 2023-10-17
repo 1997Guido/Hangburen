@@ -26,21 +26,24 @@ try {
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // You can access the values like $result['dutch_word'], $result['german_word'], $result['difficulty']
-        if ($result) {
-            echo "Random Word: Dutch: " . $result['dutch_word'] . ", German: " . $result['german_word'] . ", Difficulty: " . $result['difficulty'];
-        } else {
-            echo "No records found with the selected ID.";
-        }
+        // Create an array with the selected data
+        $selectedWordData = array(
+            'dutchword' => $result['dutch_word'],
+            'germanword' => $result['german_word'],
+            'difficulty' => $result['difficulty']
+        );
+    // Encode the selected word data as JSON and echo it
+    echo json_encode($selectedWordData);
+        // Now you have the selected word data in the $selectedWordData array
+        // You can use this array in a separate file or for your game logic.
     } else {
-        echo "No records found in the word_translations table.";
+        // Handle the case where no records are found in the word_translations table.
     }
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    // Handle database connection errors.
 }
 
 // Close the database connection
-/* echo json_encode($words); */
 $conn = null;
 ?>
 
