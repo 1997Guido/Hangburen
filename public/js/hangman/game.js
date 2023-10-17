@@ -58,16 +58,18 @@ function newGame() {
         currentTurn = "Dutch player";
       }
 
-      dutchWord = words[0];
-      germanWord = words[1];
+      dutchWord = words[0].toUpperCase();
+      germanWord = words[1].toUpperCase();
 
       if (currentTurn === "Dutch player") {
         shownWord = dutchWord;
         word = germanWord;
+        console.log("word: " + word)
         maskedWord = "_".repeat(word.length);
       } else if (currentTurn === "German player") {
         shownWord = germanWord;
         word = dutchWord;
+        console.log("word: " + word)
         maskedWord = "_".repeat(word.length);
       }
 
@@ -176,6 +178,8 @@ function generateKeyboard() {
 function makeGuess(letter) {
   let newMasked = "";
   let correctGuess = false;
+  console.log("word: " + word)
+  console.log("letter: " + letter)
 
   for (let i = 0; i < word.length; i++) {
     if (word[i] === letter) {
