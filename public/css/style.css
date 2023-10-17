@@ -1,0 +1,138 @@
+* {
+  padding: 0;
+  margin: 0;
+  z-index: 0;
+  overflow-x: hidden;
+}
+.screen-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  position: static;
+}
+
+.return-btn {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #585858;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.return-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.game-box {
+  color:azure;
+  position: relative;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+  height: 500px;
+  background: transparent;
+  border: 2px solid rgba(119, 92, 92, 0.5);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+
+h1 {
+  color: aliceblue;
+  margin-bottom: 0rem;
+}
+
+#keyboard button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 360deg;
+}
+#keyboard button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+#hangman {
+  width: 50%;
+  height: 50%;
+  margin-left: 3.5rem;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/empty-galg.png);
+  position: relative;
+  z-index: 10;
+  background-repeat: no-repeat;
+}
+
+.hide {
+  display: none;
+}
+
+#head {
+  width: 100%;
+  height: 100%;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/head-galg.png);
+  position: absolute;
+  z-index: 11;
+  background-repeat: no-repeat;
+}
+
+#body {
+  width: 100%;
+  height: 100%;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/head-body-galg.png);
+  position: absolute;
+  z-index: 12;
+  background-repeat: no-repeat;
+}
+
+#leftArm {
+  width: 100%;
+  height: 100%;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/head-body-rightarm-galg.png);
+  position: absolute;
+  z-index: 13;
+  background-repeat: no-repeat;
+}
+
+#rightArm {
+  width: 100%;
+  height: 100%;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/head-body-rightarm-leftarm-galg.png);
+  position: absolute;
+  z-index: 14;
+  background-repeat: no-repeat;
+}
+
+#leftLeg {
+  width: 100%;
+  height: 100%;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/head-body-rightarm-leftarm-rightleg-galg.png);
+  position: absolute;
+  z-index: 15;
+  background-repeat: no-repeat;
+}
+
+#rightLeg {
+  width: 100%;
+  height: 100%;
+  background-size: 80%; /* Adjust the percentage as needed */
+  background-image: url(../images/head-body-rightarm-leftarm-rightleg-leftleg-galg.png);
+  position: absolute;
+  z-index: 16;
+  background-repeat: no-repeat;
+}
