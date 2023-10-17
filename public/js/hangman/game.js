@@ -197,10 +197,33 @@ function generateKeyboard() {
   let keyboardHtml = "";
 
   for (let letter of alphabet) {
-    keyboardHtml += `<button onclick="makeGuess('${letter}')">${letter}</button>`;
+    keyboardHtml += `<button data-letter="${letter}" onclick="makeGuess('${letter}')">${letter}</button>`;
   }
 
   document.getElementById("keyboard").innerHTML = keyboardHtml;
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  newGame();
+  listenForKeyboardInput();
+});
+
+function listenForKeyboardInput() {
+  document.addEventListener("keydown", function (event) {
+    const key = event.key.toUpperCase();
+    
+    // Check if the pressed key is a letter in the alphabet
+    if (key.length === 1 && key >= "A" && key <= "Z") {
+      makeGuess(key);
+      
+      // Optionally, you can give visual feedback for the key press on the virtual keyboard
+      const button = document.querySelector(`button[data-letter="${key}"]`);
+      if (button) {
+        button.classList.add("pressed");
+        setTimeout(() => button.classList.remove("pressed"), 200);
+      }
+    }
+  });
 }
 
 function makeGuess(letter) {
