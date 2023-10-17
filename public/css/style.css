@@ -8,6 +8,7 @@
 .screen-overlay {
   width: 100vw;
   height: 100vh;
+  background-color: #000000;
   background-image: url(../images/bg.jpg);
   background-position: center;
   background-size: cover;
@@ -161,9 +162,9 @@ h2 {
 
 #hangman {
   width: 33.33%;
-  height: 100%;
+  max-height: min-content;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/empty-galg.png);
+  background-image: url(../images/empty-galg-2.png);
   background-position: center;
   position: relative;
   z-index: 10;
@@ -178,7 +179,7 @@ h2 {
   width: 100%;
   height: 100%;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/head-galg.png);
+  background-image: url(../images/head-galg-2.png);
   background-position: center;
 
   position: absolute;
@@ -190,7 +191,7 @@ h2 {
   width: 100%;
   height: 100%;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/head-body-galg.png);
+  background-image: url(../images/head-body-galg-2.png);
   position: absolute;
   z-index: 12;
   background-repeat: no-repeat;
@@ -201,7 +202,7 @@ h2 {
   width: 100%;
   height: 100%;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/head-body-rightarm-galg.png);
+  background-image: url(../images/head-body-rightarm-galg-2.png);
   position: absolute;
   z-index: 13;
   background-repeat: no-repeat;
@@ -212,7 +213,7 @@ h2 {
   width: 100%;
   height: 100%;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/head-body-rightarm-leftarm-galg.png);
+  background-image: url(../images/head-body-rightarm-leftarm-galg-2.png);
   position: absolute;
   z-index: 14;
   background-repeat: no-repeat;
@@ -223,7 +224,7 @@ h2 {
   width: 100%;
   height: 100%;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/head-body-rightarm-leftarm-rightleg-galg.png);
+  background-image: url(../images/head-body-rightarm-leftarm-rightleg-galg-2.png);
   position: absolute;
   z-index: 15;
   background-repeat: no-repeat;
@@ -234,7 +235,7 @@ h2 {
   width: 100%;
   height: 100%;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/head-body-rightarm-leftarm-rightleg-leftleg-galg.png);
+  background-image: url(../images/head-body-rightarm-leftarm-rightleg-leftleg-galg-2.png);
   position: absolute;
   z-index: 16;
   background-repeat: no-repeat;

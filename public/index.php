@@ -32,7 +32,7 @@
                     <div id="rightLeg" class="hide"></div>
                 </div>
                 <div class="germancontainer">
-                    <h2>Dutch stats</h2>
+                    <h2>German stats</h2>
                     <div id="germanPlayerTurns"></div>
                 </div>
 

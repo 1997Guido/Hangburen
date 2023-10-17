@@ -16,13 +16,17 @@
             <form method="post" name="loginCard" action="./index.php">
                 <h2>lets get started!<h2>
                         <div class="input-box">
-                            <input type="username" name="username" required>
-                            <label>Username</label>
+                            <input type="username1" name="username" required>
+                            <label>player 1</label>
+                        </div>
+                        <div class="input-box">
+                            <input type="username2" name="username" required>
+                            <label>player 2</label>
                         </div>
 
                         <button type="submit">Login</button>
                         <div class="register-link">
-                            <p>put in your name and hang your self up</a></p>
+                            <p>Click <a href="./input.php">here</a> to add words to your game!</a></p>
                         </div>
             </form>
         </div>
