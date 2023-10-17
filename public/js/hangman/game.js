@@ -21,6 +21,9 @@ let dutchPlayerData = {
   turnOneAttempts: 0,
   turnTwoAttempts: 0,
   turnThreeAttempts: 0,
+  turnOneFail: 0,
+  turnTwoFail: 0,
+  turnThreeFail: false,
 };
 let germanPlayerData = {
   turnOneTime: 0,
@@ -32,6 +35,9 @@ let germanPlayerData = {
   turnOneAttempts: 0,
   turnTwoAttempts: 0,
   turnThreeAttempts: 0,
+  turnOneFail: 0,
+  turnTwoFail: 0,
+  turnThreeFail: false,
 };
 
 let playerArray = ["German player", "Dutch player"];
@@ -86,14 +92,18 @@ function nextTurn() {
   lastTurn = currentTurn;
 
   if (lastTurn === "Dutch player") {
+    // Increment Dutch player's turn counter
     dutchPlayerTurn++;
 
+    // Update the total game count
 
     console.log("gamecount is " + gameCount);
     console.log("dutchPlayerTurn is " + dutchPlayerTurn);
     console.log("germanPlayerTurn is " + germanPlayerTurn);
     document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
 
+    // Check if game should end
+      // Existing code to handle player data and other things
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000;
 
@@ -102,34 +112,47 @@ function nextTurn() {
           dutchPlayerData.turnOneTime = totalTime;
           dutchPlayerData.turnOneDifficulty = "easy";
           dutchPlayerData.turnOneAttempts = attempts;
+          if (dutchPlayerData.turnOneAttempts >= 6) {
+            dutchPlayerData.turnOneFail = true;
+          }
           break;
         case 2:
           dutchPlayerData.turnTwoTime = totalTime;
           dutchPlayerData.turnTwoDifficulty = "easy";
           dutchPlayerData.turnTwoAttempts = attempts;
+          if (dutchPlayerData.turnTwoAttempts >= 6) {
+            dutchPlayerData.turnTwoFail = true;
+          }
           break;
         case 3:
           dutchPlayerData.turnThreeTime = totalTime;
           dutchPlayerData.turnThreeDifficulty = "easy";
           dutchPlayerData.turnThreeAttempts = attempts;
+          if (dutchPlayerData.turnThreeAttempts >= 6) {
+            dutchPlayerData.turnThreeFail = true;
+          }
           break;
         default:
           break;
       }
 
+      // Start a new game and update UI
       newGame();
       hideHangman();
   }
 
   if (lastTurn === "German player") {
+    // Increment German player's turn counter
     germanPlayerTurn++;
 
+    // Update the total game count
 
     console.log("gamecount is " + gameCount);
     console.log("dutchPlayerTurn is " + dutchPlayerTurn);
     console.log("germanPlayerTurn is " + germanPlayerTurn);
     document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
 
+      // Existing code to handle player data and other things
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000;
 
@@ -138,21 +161,31 @@ function nextTurn() {
           germanPlayerData.turnOneTime = totalTime;
           germanPlayerData.turnOneDifficulty = "easy";
           germanPlayerData.turnOneAttempts = attempts;
+          if (germanPlayerData.turnOneAttempts >= 6) {
+            germanPlayerData.turnOneFail = true;
+          }
           break;
         case 2:
           germanPlayerData.turnTwoTime = totalTime;
           germanPlayerData.turnTwoDifficulty = "easy";
           germanPlayerData.turnTwoAttempts = attempts;
+          if (germanPlayerData.turnTwoAttempts >= 6) {
+            germanPlayerData.turnTwoFail = true;
+          }
           break;
         case 3:
           germanPlayerData.turnThreeTime = totalTime;
           germanPlayerData.turnThreeDifficulty = "easy";
           germanPlayerData.turnThreeAttempts = attempts;
+          if (germanPlayerData.turnThreeAttempts >= 6) {
+            germanPlayerData.turnThreeFail = true;
+          }
           break;
         default:
           break;
       }
 
+      // Start a new game and update UI
       if (gameCount >= 6){
         endGame();
       }else {
@@ -188,31 +221,10 @@ function generateKeyboard() {
   let keyboardHtml = "";
 
   for (let letter of alphabet) {
-    keyboardHtml += `<button data-letter="${letter}" onclick="makeGuess('${letter}')">${letter}</button>`;
+    keyboardHtml += `<button onclick="makeGuess('${letter}')">${letter}</button>`;
   }
 
   document.getElementById("keyboard").innerHTML = keyboardHtml;
-}
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  newGame();
-  listenForKeyboardInput();
-});
-
-function listenForKeyboardInput() {
-  document.addEventListener("keydown", function (event) {
-    const key = event.key.toUpperCase();
-    
-    if (key.length === 1 && key >= "A" && key <= "Z") {
-      makeGuess(key);
-      
-      const button = document.querySelector(`button[data-letter="${key}"]`);
-      if (button) {
-        button.classList.add("pressed");
-        setTimeout(() => button.classList.remove("pressed"), 200);
-      }
-    }
-  });
 }
 
 function makeGuess(letter) {
