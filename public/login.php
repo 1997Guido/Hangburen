@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="icon" href="./images/logo-trans.png">
     <title>Hang buren</title>
 </head>
 
@@ -21,7 +22,7 @@
 
                         <button type="submit">Login</button>
                         <div class="register-link">
-                            <p>buy me a car</a></p>
+                            <p>put in your name and hang your self up</a></p>
                         </div>
             </form>
         </div>

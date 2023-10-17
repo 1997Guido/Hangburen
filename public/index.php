@@ -6,13 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
+    <link rel="icon" href="./images/logo-trans.png">
 </head>
 
 <body>
     <div class="screen-overlay">
         <a href="./login.php" class="return-btn"><img class="icon" src="https://img.icons8.com/material-outlined/24/000000/return.png" /></a>
-        <div class="game-box">
+        <div id="game-box" class="game-box">
             <div class="topcontainer">
                 <h1>Hangman</h1>
                 <div id="whoseTurn"></div>
@@ -20,8 +20,8 @@
             </div>
             <div class="middelconatiner">
                 <div class="dutchcontainer">
+                    <h2>Dutch stats</h2>
                     <div id="dutchPlayerTurns"></div>
-                    dutch
                 </div>
                 <div id="hangman">
                     <div id="head" class="hide"></div>
@@ -32,15 +32,18 @@
                     <div id="rightLeg" class="hide"></div>
                 </div>
                 <div class="germancontainer">
+                    <h2>Dutch stats</h2>
                     <div id="germanPlayerTurns"></div>
-                    german
                 </div>
 
             </div>
             <div id="wordToGuess"></div>
             <div id="currentAttempts"></div>
             <div id="keyboard"></div>
-            <button onclick="newGame()">New Game</button>
+            <button id="newGame" onclick="newGame()">!New Game!</button>
+        </div>
+        <div id="end-box" class="hide">
+            klaaaar
         </div>
 
     </div>
