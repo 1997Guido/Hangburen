@@ -11,7 +11,7 @@ let totalTime = 0;
 
 let dutchPlayerTurn = 0;
 let germanPlayerTurn = 0;
-let dutchPlayerScore = {
+let dutchPlayerData = {
   turnOneTime: 0,
   turnTwoTime: 0,
   turnThreeTime: 0,
@@ -22,7 +22,7 @@ let dutchPlayerScore = {
   turnTwoAttempts: 0,
   turnThreeAttempts: 0,
 };
-let germanPlayerScore = {
+let germanPlayerData = {
   turnOneTime: 0,
   turnTwoTime: 0,
   turnThreeTime: 0,
@@ -73,7 +73,7 @@ function newGame() {
 
       document.getElementById("wordToGuess").textContent = maskedWord;
       document.getElementById("untranslatedWord").textContent = shownWord;
-      document.getElementById("playerTurn").textContent = currentTurn;
+      document.getElementById("whoseTurn").textContent = currentTurn;
 
       generateKeyboard();
       attempts = 0;
@@ -81,6 +81,7 @@ function newGame() {
       gameCount++;
       if (currentTurn === "Dutch player") {
         dutchPlayerTurn++;
+
       }
       if (currentTurn === "German player") {
         germanPlayerTurn++;
@@ -96,19 +97,19 @@ function nextTurn() {
       totalTime += (endTime - startTime) / 1000; // Convert to seconds
       switch (dutchPlayerTurn) {
         case 1:
-          dutchPlayerScore.turnOneTime = totalTime;
-          dutchPlayerScore.turnOneDifficulty = "easy";
-          dutchPlayerScore.turnOneAttempts = attempts;
+          dutchPlayerData.turnOneTime = totalTime;
+          dutchPlayerData.turnOneDifficulty = "easy";
+          dutchPlayerData.turnOneAttempts = attempts;
           break;
         case 2:
-          dutchPlayerScore.turnTwoTime = totalTime;
-          dutchPlayerScore.turnTwoDifficulty = "easy";
-          dutchPlayerScore.turnTwoAttempts = attempts;
+          dutchPlayerData.turnTwoTime = totalTime;
+          dutchPlayerData.turnTwoDifficulty = "easy";
+          dutchPlayerData.turnTwoAttempts = attempts;
           break;
         case 3:
-          dutchPlayerScore.turnThreeTime = totalTime;
-          dutchPlayerScore.turnThreeDifficulty = "easy";
-          dutchPlayerScore.turnThreeAttempts = attempts;
+          dutchPlayerData.turnThreeTime = totalTime;
+          dutchPlayerData.turnThreeDifficulty = "easy";
+          dutchPlayerData.turnThreeAttempts = attempts;
           break;
         default:
           break;
@@ -121,19 +122,19 @@ function nextTurn() {
       totalTime += (endTime - startTime) / 1000; // Convert to seconds
       switch (germanPlayerTurn) {
         case 1:
-          germanPlayerScore.turnOneTime = totalTime;
-          germanPlayerScore.turnOneDifficulty = "easy";
-          germanPlayerScore.turnOneAttempts = attempts;
+          germanPlayerData.turnOneTime = totalTime;
+          germanPlayerData.turnOneDifficulty = "easy";
+          germanPlayerData.turnOneAttempts = attempts;
           break;
         case 2:
-          germanPlayerScore.turnTwoTime = totalTime;
-          germanPlayerScore.turnTwoDifficulty = "easy";
-          germanPlayerScore.turnTwoAttempts = attempts;
+          germanPlayerData.turnTwoTime = totalTime;
+          germanPlayerData.turnTwoDifficulty = "easy";
+          germanPlayerData.turnTwoAttempts = attempts;
           break;
         case 3:
-          germanPlayerScore.turnThreeTime = totalTime;
-          germanPlayerScore.turnThreeDifficulty = "easy";
-          germanPlayerScore.turnThreeAttempts = attempts;
+          germanPlayerData.turnThreeTime = totalTime;
+          germanPlayerData.turnThreeDifficulty = "easy";
+          germanPlayerData.turnThreeAttempts = attempts;
           break;
         default:
           break;
@@ -146,7 +147,20 @@ function nextTurn() {
   }
 }
 
-function endGame() {}
+function endGame() {
+  fetch("algorithm.php", {
+    method: "POST",
+    body: JSON.stringify({
+      dutchPlayerData: dutchPlayerData,
+      germanPlayerData: germanPlayerData
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  }.then(response => response.json().then(data => {
+    console.log(data);
+    })))
+}
 
 function generateKeyboard() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -174,6 +188,7 @@ function makeGuess(letter) {
 
   if (!correctGuess) {
     attempts++;
+    document.getElementById("currentAttempts").textContent = attempts;
     showHangman(attempts);
   }
 
@@ -219,26 +234,26 @@ function showHangman(attempts) {
   }
 }
 
-// async function saveHighScore(username, score) {
+// async function saveHighData(username, Data) {
 //   try {
-//     const response = await fetch("save_score.php", {
+//     const response = await fetch("save_Data.php", {
 //       method: "POST",
 //       headers: {
 //         "Content-Type": "application/x-www-form-urlencoded",
 //       },
-//       body: `username=${username}&score=${score}`,
+//       body: `username=${username}&Data=${Data}`,
 //     });
 
 //     if (!response.ok) {
 //       throw new Error(`Network response was not ok: ${response.statusText}`);
 //     }
 //     if (response.status === 201) {
-//       alert("High score saved!");
+//       alert("High Data saved!");
 //     } else {
-//       alert("Failed to save high score.");
+//       alert("Failed to save high Data.");
 //     }
 //   } catch (error) {
 //     console.error(`There was a problem with the fetch operation: ${error}`);
-//     alert("Failed to save high score due to a network error.");
+//     alert("Failed to save high Data due to a network error.");
 //   }
 // }

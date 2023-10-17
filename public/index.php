@@ -15,9 +15,10 @@
         <div class="game-box">
             <h1>Hangman</h1>
             <div id="untranslatedWord"></div>
-            <div id="playerOneScore"></div>
-            <div id="playerTwoScore"></div>
-            <div id="playerTurn"></div>
+            <div id="germanPlayerTurns"></div>
+            <div id="dutchPlayerTurns"></div>
+            <div id="whoseTurn"></div>
+            <div id="currentAttempts"></div>
             <div id="wordToGuess"></div>
             <div id="hangman">
                 <div id="head" class="hide"></div>
