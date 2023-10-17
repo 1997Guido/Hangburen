@@ -78,6 +78,7 @@ function newGame() {
       generateKeyboard();
       attempts = 0;
       startTime = Date.now();
+      gameCount++;
     });
 }
 
@@ -89,7 +90,6 @@ function nextTurn() {
     dutchPlayerTurn++;
 
     // Update the total game count
-    gameCount = dutchPlayerTurn + germanPlayerTurn;
 
     console.log("gamecount is " + gameCount);
     console.log("dutchPlayerTurn is " + dutchPlayerTurn);
@@ -97,10 +97,6 @@ function nextTurn() {
     document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
 
     // Check if game should end
-    if (gameCount >= 6) {
-      endGame();
-      console.log("gamecount is 6 ending game");
-    } else {
       // Existing code to handle player data and other things
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000;
@@ -128,7 +124,6 @@ function nextTurn() {
       // Start a new game and update UI
       newGame();
       hideHangman();
-    }
   }
 
   if (lastTurn === "German player") {
@@ -136,19 +131,12 @@ function nextTurn() {
     germanPlayerTurn++;
 
     // Update the total game count
-    gameCount = dutchPlayerTurn + germanPlayerTurn;
 
     console.log("gamecount is " + gameCount);
     console.log("dutchPlayerTurn is " + dutchPlayerTurn);
     console.log("germanPlayerTurn is " + germanPlayerTurn);
     document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
 
-    // Check if game should end
-    if (gameCount >= 6) {
-      endGame();
-      console.log("gamecount is 6 ending game");
-      hideGame();
-    } else {
       // Existing code to handle player data and other things
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000;
@@ -174,9 +162,12 @@ function nextTurn() {
       }
 
       // Start a new game and update UI
-      newGame();
-      hideHangman();
-    }
+      if (gameCount >= 6){
+        endGame();
+      }else {
+        newGame();
+        hideHangman();
+      }
   }
 }
 
