@@ -58,8 +58,8 @@ function newGame() {
         currentTurn = "Dutch player";
       }
 
-      dutchWord = words[0];
-      germanWord = words[1];
+      dutchWord = words[0].toUpperCase();
+      germanWord = words[1].toUpperCase();
 
       if (currentTurn === "Dutch player") {
         shownWord = dutchWord;
