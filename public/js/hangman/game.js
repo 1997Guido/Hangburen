@@ -86,18 +86,14 @@ function nextTurn() {
   lastTurn = currentTurn;
 
   if (lastTurn === "Dutch player") {
-    // Increment Dutch player's turn counter
     dutchPlayerTurn++;
 
-    // Update the total game count
 
     console.log("gamecount is " + gameCount);
     console.log("dutchPlayerTurn is " + dutchPlayerTurn);
     console.log("germanPlayerTurn is " + germanPlayerTurn);
     document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
 
-    // Check if game should end
-      // Existing code to handle player data and other things
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000;
 
@@ -121,23 +117,19 @@ function nextTurn() {
           break;
       }
 
-      // Start a new game and update UI
       newGame();
       hideHangman();
   }
 
   if (lastTurn === "German player") {
-    // Increment German player's turn counter
     germanPlayerTurn++;
 
-    // Update the total game count
 
     console.log("gamecount is " + gameCount);
     console.log("dutchPlayerTurn is " + dutchPlayerTurn);
     console.log("germanPlayerTurn is " + germanPlayerTurn);
     document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
 
-      // Existing code to handle player data and other things
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000;
 
@@ -161,7 +153,6 @@ function nextTurn() {
           break;
       }
 
-      // Start a new game and update UI
       if (gameCount >= 6){
         endGame();
       }else {
@@ -212,11 +203,9 @@ function listenForKeyboardInput() {
   document.addEventListener("keydown", function (event) {
     const key = event.key.toUpperCase();
     
-    // Check if the pressed key is a letter in the alphabet
     if (key.length === 1 && key >= "A" && key <= "Z") {
       makeGuess(key);
       
-      // Optionally, you can give visual feedback for the key press on the virtual keyboard
       const button = document.querySelector(`button[data-letter="${key}"]`);
       if (button) {
         button.classList.add("pressed");
