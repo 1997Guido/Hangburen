@@ -78,21 +78,23 @@ function newGame() {
       generateKeyboard();
       attempts = 0;
       startTime = Date.now();
-      gameCount++;
-      if (currentTurn === "Dutch player") {
-        dutchPlayerTurn++;
-
-      }
-      if (currentTurn === "German player") {
-        germanPlayerTurn++;
-      }
     });
 }
 
 function nextTurn() {
-  if (gameCount !== 6) {
     lastTurn = currentTurn;
     if (lastTurn === "Dutch player") {
+      dutchPlayerTurn++;
+      gameCount = dutchPlayerTurn + germanPlayerTurn;
+      console.log("gamecount is " + gameCount);
+      console.log("dutchPlayerTurn is " + dutchPlayerTurn);
+      console.log("germanPlayerTurn is " + germanPlayerTurn);
+      document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
+      if (gameCount === 6) {
+        endGame();
+        console.log("gamecount is 6 ending game")
+        hideGame();
+      }else{
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000; // Convert to seconds
       switch (dutchPlayerTurn) {
@@ -116,8 +118,19 @@ function nextTurn() {
       }
       newGame();
       hideHangman();
-    }
+    }}
     if (lastTurn === "German player") {
+      germanPlayerTurn++;
+      gameCount = dutchPlayerTurn + germanPlayerTurn;
+      if (gameCount === 6) {
+        endGame();
+        console.log("gamecount is 6 ending game")
+        hideGame();
+      }else{
+      console.log("gamecount is " + gameCount);
+      console.log("dutchPlayerTurn is " + dutchPlayerTurn);
+      console.log("germanPlayerTurn is " + germanPlayerTurn);
+      document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
       const endTime = Date.now();
       totalTime += (endTime - startTime) / 1000; // Convert to seconds
       switch (germanPlayerTurn) {
@@ -141,10 +154,7 @@ function nextTurn() {
       }
       newGame();
       hideHangman();
-    }
-  } else if (gameCount === 6) {
-    endGame();
-  }
+    }}
 }
 
 function endGame() {
@@ -157,9 +167,11 @@ function endGame() {
     headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
-  }.then(response => response.json().then(data => {
+  }).then(response => response.json().then(data => {
     console.log(data);
-    })))
+    document.getElementById("game-box").classList.add("hide");
+    document.getElementById("end-box").classList.remove("hide");
+    }));
 }
 
 function generateKeyboard() {

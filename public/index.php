@@ -42,6 +42,7 @@
             <div id="keyboard"></div>
             <button onclick="newGame()">New Game</button>
         </div>
+        <div class="end-box hide">Javascript needs to insert the winner and scores here after calculating</div>
 
     </div>
 
