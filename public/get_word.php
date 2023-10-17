@@ -9,6 +9,22 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $checkTableSql = "SHOW TABLES LIKE 'word_translations'";
+    $stmt = $conn->query($checkTableSql);
+    $tableExists = $stmt->rowCount() > 0;
+
+    if (!$tableExists) {
+        // If the table doesn't exist, create it
+        $createTableSql = "CREATE TABLE word_translations (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            dutch_word VARCHAR(255) NOT NULL,
+            german_word VARCHAR(255) NOT NULL,
+            difficulty VARCHAR(50) NOT NULL
+        )";
+        $conn->exec($createTableSql);
+        echo "Table 'word_translations' created successfully.";
+    }
+
     // Retrieve all IDs from the word_translations table
     $sql = "SELECT id FROM word_translations";
     $stmt = $conn->query($sql);
