@@ -124,7 +124,6 @@ function nextTurn() {
       if (gameCount > 6) {
         endGame();
         console.log("gamecount is 6 ending game")
-        hideGame();
       }else{
       console.log("gamecount is " + gameCount);
       console.log("dutchPlayerTurn is " + dutchPlayerTurn);
@@ -169,8 +168,7 @@ function endGame() {
     }
   }).then(response => response.json().then(data => {
     console.log(data);
-    document.getElementById("game-box").classList.add("hide");
-    document.getElementById("end-box").classList.remove("hide");
+    hidegame();
     }));
 }
 
