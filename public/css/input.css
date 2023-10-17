@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,400;1,200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Spectral", serif;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/code-bg.jpg);
+  background-color: rgb(128, 128, 128);
+  background-size: cover;
+  background-position: center;
+  animation: animateBg 7s linear infinite;
+}
+
+.login-box {
+  position: relative;
+  width: 600px;
+  height: 450px;
+  background: transparent;
+  border: 2px solid rgba(119, 92, 92, 0.5);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+
+.login-box {
+  position: relative;
+  width: 600px;
+  height: 450px;
+  background: transparent;
+  color: aliceblue;
+  border: 2px solid rgba(119, 92, 92, 0.5);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+
+.login-box input[type="text"],
+.login-box select {
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.ibutton {
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.ibutton:hover {
+  background-color: #45a049;
+}
+
+.return-btn {
+  padding: 8px;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: purple;
+  color: white;
+  text-decoration: none;
+}
+
+.return-btn:visited {
+  color: white;
+}
+
+.return-btn:hover {
+  background-color: #800080;
+}
+
+.return-btn:active {
+  color: white;
+}
