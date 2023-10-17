@@ -27,13 +27,10 @@ try {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Create an array with the selected data
-        $selectedWordData = array(
-            'dutchword' => $result['dutch_word'],
-            'germanword' => $result['german_word'],
-            'difficulty' => $result['difficulty']
+        $words = array($result['dutch_word'], $result['german_word'], $result['difficulty']
         );
     // Encode the selected word data as JSON and echo it
-    echo json_encode($selectedWordData);
+    echo json_encode($words);
         // Now you have the selected word data in the $selectedWordData array
         // You can use this array in a separate file or for your game logic.
     } else {
