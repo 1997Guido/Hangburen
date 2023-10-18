@@ -103,42 +103,42 @@ function nextTurn() {
     document.getElementById("dutchPlayerTurns").innerHTML = dutchPlayerTurn;
 
     // Check if game should end
-      // Existing code to handle player data and other things
-      const endTime = Date.now();
-      totalTime += (endTime - startTime) / 1000;
+    // Existing code to handle player data and other things
+    const endTime = Date.now();
+    totalTime += (endTime - startTime) / 1000;
 
-      switch (dutchPlayerTurn) {
-        case 1:
-          dutchPlayerData.turnOneTime = totalTime;
-          dutchPlayerData.turnOneDifficulty = "easy";
-          dutchPlayerData.turnOneAttempts = attempts;
-          if (dutchPlayerData.turnOneAttempts >= 6) {
-            dutchPlayerData.turnOneFail = true;
-          }
-          break;
-        case 2:
-          dutchPlayerData.turnTwoTime = totalTime;
-          dutchPlayerData.turnTwoDifficulty = "easy";
-          dutchPlayerData.turnTwoAttempts = attempts;
-          if (dutchPlayerData.turnTwoAttempts >= 6) {
-            dutchPlayerData.turnTwoFail = true;
-          }
-          break;
-        case 3:
-          dutchPlayerData.turnThreeTime = totalTime;
-          dutchPlayerData.turnThreeDifficulty = "easy";
-          dutchPlayerData.turnThreeAttempts = attempts;
-          if (dutchPlayerData.turnThreeAttempts >= 6) {
-            dutchPlayerData.turnThreeFail = true;
-          }
-          break;
-        default:
-          break;
-      }
+    switch (dutchPlayerTurn) {
+      case 1:
+        dutchPlayerData.turnOneTime = totalTime;
+        dutchPlayerData.turnOneDifficulty = "easy";
+        dutchPlayerData.turnOneAttempts = attempts;
+        if (dutchPlayerData.turnOneAttempts >= 6) {
+          dutchPlayerData.turnOneFail = true;
+        }
+        break;
+      case 2:
+        dutchPlayerData.turnTwoTime = totalTime;
+        dutchPlayerData.turnTwoDifficulty = "easy";
+        dutchPlayerData.turnTwoAttempts = attempts;
+        if (dutchPlayerData.turnTwoAttempts >= 6) {
+          dutchPlayerData.turnTwoFail = true;
+        }
+        break;
+      case 3:
+        dutchPlayerData.turnThreeTime = totalTime;
+        dutchPlayerData.turnThreeDifficulty = "easy";
+        dutchPlayerData.turnThreeAttempts = attempts;
+        if (dutchPlayerData.turnThreeAttempts >= 6) {
+          dutchPlayerData.turnThreeFail = true;
+        }
+        break;
+      default:
+        break;
+    }
 
-      // Start a new game and update UI
-      newGame();
-      hideHangman();
+    // Start a new game and update UI
+    newGame();
+    hideHangman();
   }
 
   if (lastTurn === "German player") {
@@ -152,46 +152,46 @@ function nextTurn() {
     console.log("germanPlayerTurn is " + germanPlayerTurn);
     document.getElementById("germanPlayerTurns").innerHTML = germanPlayerTurn;
 
-      // Existing code to handle player data and other things
-      const endTime = Date.now();
-      totalTime += (endTime - startTime) / 1000;
+    // Existing code to handle player data and other things
+    const endTime = Date.now();
+    totalTime += (endTime - startTime) / 1000;
 
-      switch (germanPlayerTurn) {
-        case 1:
-          germanPlayerData.turnOneTime = totalTime;
-          germanPlayerData.turnOneDifficulty = "easy";
-          germanPlayerData.turnOneAttempts = attempts;
-          if (germanPlayerData.turnOneAttempts >= 6) {
-            germanPlayerData.turnOneFail = true;
-          }
-          break;
-        case 2:
-          germanPlayerData.turnTwoTime = totalTime;
-          germanPlayerData.turnTwoDifficulty = "easy";
-          germanPlayerData.turnTwoAttempts = attempts;
-          if (germanPlayerData.turnTwoAttempts >= 6) {
-            germanPlayerData.turnTwoFail = true;
-          }
-          break;
-        case 3:
-          germanPlayerData.turnThreeTime = totalTime;
-          germanPlayerData.turnThreeDifficulty = "easy";
-          germanPlayerData.turnThreeAttempts = attempts;
-          if (germanPlayerData.turnThreeAttempts >= 6) {
-            germanPlayerData.turnThreeFail = true;
-          }
-          break;
-        default:
-          break;
-      }
+    switch (germanPlayerTurn) {
+      case 1:
+        germanPlayerData.turnOneTime = totalTime;
+        germanPlayerData.turnOneDifficulty = "easy";
+        germanPlayerData.turnOneAttempts = attempts;
+        if (germanPlayerData.turnOneAttempts >= 6) {
+          germanPlayerData.turnOneFail = true;
+        }
+        break;
+      case 2:
+        germanPlayerData.turnTwoTime = totalTime;
+        germanPlayerData.turnTwoDifficulty = "easy";
+        germanPlayerData.turnTwoAttempts = attempts;
+        if (germanPlayerData.turnTwoAttempts >= 6) {
+          germanPlayerData.turnTwoFail = true;
+        }
+        break;
+      case 3:
+        germanPlayerData.turnThreeTime = totalTime;
+        germanPlayerData.turnThreeDifficulty = "easy";
+        germanPlayerData.turnThreeAttempts = attempts;
+        if (germanPlayerData.turnThreeAttempts >= 6) {
+          germanPlayerData.turnThreeFail = true;
+        }
+        break;
+      default:
+        break;
+    }
 
-      // Start a new game and update UI
-      if (gameCount >= 6){
-        endGame();
-      }else {
-        newGame();
-        hideHangman();
-      }
+    // Start a new game and update UI
+    if (gameCount >= 6) {
+      endGame();
+    } else {
+      newGame();
+      hideHangman();
+    }
   }
 }
 
@@ -200,38 +200,40 @@ function endGame() {
     method: "POST",
     body: JSON.stringify({
       dutchPlayerData: dutchPlayerData,
-      germanPlayerData: germanPlayerData
+      germanPlayerData: germanPlayerData,
     }),
     headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  }).then(response => response.json().then(data => {
-    let germanPlayername = prompt("Enter German player name");
-    let dutchPlayername = prompt("Enter Dutch player name");
-    let scoreData = {
-      germanPlayername: germanPlayername,
-      dutchPlayername: dutchPlayername,
-      germanPlayerScore: data.germanPlayerScore,
-      dutchPlayerScore: data.dutchPlayerScore,
-    }
-    hideGame();
-    fetch("save_score.php", {
-      method: "POST",
-      body: JSON.stringify(scoreData),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    }).then(response => response.json().then(data => {
-      console.log(data);
-    }
-  ));
-  }));
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  }).then((response) =>
+    response.json().then((data) => {
+      let germanPlayername = prompt("Enter German player name");
+      let dutchPlayername = prompt("Enter Dutch player name");
+      let scoreData = {
+        germanPlayername: germanPlayername,
+        dutchPlayername: dutchPlayername,
+        germanPlayerScore: data.germanPlayerScore,
+        dutchPlayerScore: data.dutchPlayerScore,
+      };
+      hideGame();
+      fetch("save_score.php", {
+        method: "POST",
+        body: JSON.stringify(scoreData),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((response) =>
+        response.json().then((data) => {
+          console.log(data);
+        })
+      );
+    })
+  );
 }
 function hideGame() {
   document.getElementById("game-box").classList.add("hide");
   document.getElementById("end-box").classList.remove("hide");
 }
-
 
 function generateKeyboard() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -252,10 +254,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 function listenForKeyboardInput() {
   document.addEventListener("keydown", function (event) {
     const key = event.key.toUpperCase();
-    
+
     if (key.length === 1 && key >= "A" && key <= "Z") {
       makeGuess(key);
-      
+
       const button = document.querySelector(`button[data-letter="${key}"]`);
       if (button) {
         button.classList.add("pressed");
@@ -295,28 +297,51 @@ function makeGuess(letter) {
   }
 }
 function hideHangman() {
-  const parts = ["head", "body", "leftArm", "rightArm", "leftLeg", "rightLeg"];
+  const parts = [
+    "beam1",
+    "beam2",
+    "beam3",
+    "beam4",
+    "head",
+    "body",
+    "leftArm",
+    "rightArm",
+    "leftLeg",
+    "rightLeg",
+  ];
   parts.forEach((part) => document.getElementById(part).classList.add("hide"));
 }
 
 function showHangman(attempts) {
   switch (attempts) {
     case 1:
-      document.getElementById("head").classList.remove("hide");
+      document.getElementById("beam1").classList.remove("hide");
       break;
     case 2:
-      document.getElementById("body").classList.remove("hide");
+      document.getElementById("beam2").classList.remove("hide");
       break;
     case 3:
-      document.getElementById("leftArm").classList.remove("hide");
+      document.getElementById("beam3").classList.remove("hide");
       break;
     case 4:
-      document.getElementById("rightArm").classList.remove("hide");
+      document.getElementById("beam4").classList.remove("hide");
       break;
     case 5:
-      document.getElementById("leftLeg").classList.remove("hide");
+      document.getElementById("head").classList.remove("hide");
       break;
     case 6:
+      document.getElementById("body").classList.remove("hide");
+      break;
+    case 7:
+      document.getElementById("leftArm").classList.remove("hide");
+      break;
+    case 8:
+      document.getElementById("rightArm").classList.remove("hide");
+      break;
+    case 9:
+      document.getElementById("leftLeg").classList.remove("hide");
+      break;
+    case 10:
       document.getElementById("rightLeg").classList.remove("hide");
       alert("You lost! Next Turn!");
       nextTurn();

@@ -10,8 +10,8 @@
 </head>
 
 <body>
-<div class="container">
-        <h2>Welcome to Hangburen</h2>
+    <div class="container">
+        <h3>Welcome to Hangburen</h3>
         <p>"Hangburen" is a game inspired by Hangman. In "Hangburen," players can compete against and/or with each other. Players are presented with a Dutch or German word in turns, which they must guess and translate. With each incorrect guess, a gallows and a figure hanging from it is progressively drawn. After 10 turns, you lose. Each player must guess 3 words, and afterwards, a score is calculated based on the time taken per word and the average number of mistakes made per word.</p>
         <p>The name "Hangburen" is derived from the word "Hang," from Hangman, and "Buren," the Dutch word for neighbors.</p>
         <h3>Nederlands:</h3>
@@ -20,11 +20,8 @@
         <h3>Duits:</h3>
         <p>"Hangburen" ist ein Spiel, das von Hangman inspiriert ist. In "Hangburen" können Spieler gegeneinander und/oder miteinander antreten. Den Spielern werden abwechselnd niederländische oder deutsche Wörter präsentiert, die sie erraten und übersetzen müssen. Mit jedem falschen Tipp wird eine Galgenkonstruktion und eine daran hängende Figur schrittweise gezeichnet. Nach 10 Runden verliert man. Jeder Spieler muss 3 Wörter erraten, und danach wird eine Punktzahl basierend auf der benötigten Zeit pro Wort und der durchschnittlichen Anzahl von Fehlern pro Wort berechnet.</p>
         <p>Der Name "Hangburen" leitet sich von dem Wort "Hang" aus Hangman und "Buren" ab, dem niederländischen Wort für Nachbarn.</p>
+        <a href="./login.php" class="return-btn"><img class="icon" src="https://img.icons8.com/material-outlined/24/000000/return.png" /></a>
     </div>
-
-</div>
-
-
 
 </body>
 

@@ -28,6 +28,9 @@
                         <div class="register-link">
                             <p>Click <a href="./input.php">here</a> to add words to your game!</a></p>
                         </div>
+                        <div class="register-link">
+                            <p><a href="./about.php">about</a></a></p>
+                        </div>
             </form>
         </div>
     </section>
