@@ -17,7 +17,7 @@
         <h3>Nederlands:</h3>
         <p>"Hangburen" is een spel geïnspireerd door Galgje. In "Hangburen" kunnen spelers tegen en/of met elkaar spelen. Spelers krijgen om de beurt een Nederlands of Duits woord gepresenteerd, dat ze moeten raden en vertalen. Bij elke foutieve gok wordt er een galg en een figuur aan de galg getekend. Na 10 beurten ben je af. Elke speler moet 3 woorden raden, en daarna wordt een score berekend op basis van de tijd die per woord is genomen en het gemiddelde aantal gemaakte fouten per woord.</p>
         <p>De naam "Hangburen" komt van het woord "Hang", van Hangman (galgje), en "Buren", het Nederlandse woord voor buren.</p>
-        <h3>Duits:</h3>
+        <h3>Deutsch:</h3>
         <p>"Hangburen" ist ein Spiel, das von Hangman inspiriert ist. In "Hangburen" können Spieler gegeneinander und/oder miteinander antreten. Den Spielern werden abwechselnd niederländische oder deutsche Wörter präsentiert, die sie erraten und übersetzen müssen. Mit jedem falschen Tipp wird eine Galgenkonstruktion und eine daran hängende Figur schrittweise gezeichnet. Nach 10 Runden verliert man. Jeder Spieler muss 3 Wörter erraten, und danach wird eine Punktzahl basierend auf der benötigten Zeit pro Wort und der durchschnittlichen Anzahl von Fehlern pro Wort berechnet.</p>
         <p>Der Name "Hangburen" leitet sich von dem Wort "Hang" aus Hangman und "Buren" ab, dem niederländischen Wort für Nachbarn.</p>
         <a href="./login.php" class="return-btn"><img class="icon" src="https://img.icons8.com/material-outlined/24/000000/return.png" /></a>
