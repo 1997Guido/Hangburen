@@ -164,7 +164,7 @@ h2 {
   width: 33.33%;
   max-height: min-content;
   background-size: 100%; /* Adjust the percentage as needed */
-  background-image: url(../images/empty-galg-2.png);
+  background-image: url(../images/blank.png);
   background-position: center;
   position: relative;
   z-index: 6;

@@ -24,6 +24,10 @@
                     <div id="dutchPlayerTurns"></div>
                 </div>
                 <div id="hangman">
+                    <div id="beam1" class="hide"></div>
+                    <div id="beam2" class="hide"></div>
+                    <div id="beam3" class="hide"></div>
+                    <div id="beam4" class="hide"></div>
                     <div id="head" class="hide"></div>
                     <div id="body" class="hide"></div>
                     <div id="leftArm" class="hide"></div>
@@ -40,7 +44,7 @@
             <div id="wordToGuess"></div>
             <div id="currentAttempts"></div>
             <div id="keyboard"></div>
-            <button id="newGame" onclick="newGame()">!New Game!</button>
+            <button id="newGame" onclick="newGame()">New Game</button>
         </div>
         <div id="end-box" class="hide"><a href="highscore.php"><button>Click here for highscores</button></a></div>
 

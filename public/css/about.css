@@ -1,36 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,400;1,200&display=swap");
 
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-image: url(../images/bg.jpg);
-        background-position: center;
-        background-size: cover;
-        position: static;
-    }
-    header {
-        background-color: #2c3e50;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-    }
-    .container {
-        max-width: 800px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px 0px #888888;
-    }
-    h1 {
-        font-size: 28px; /* Increase the font size for the h1 element */
-    }
-    p {
-        font-size: 18px; /* Increase the font size for the p elements */
-    }
-
-
+body {
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  position: static;
+}
+header {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+.container {
+  max-width: 800px;
+  padding: 2rem;
+  background: #2c3e50f2;
+  border: 2px solid rgba(170, 158, 158, 0.864);
+  border-radius: 50px;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+h3 {
+  color: #f7f7f7;
+  font-size: 23px; /* Increase the font size for the h1 element */
+}
+p {
+  color: #f7f7f7;
+  font-size: 18px; /* Increase the font size for the p elements */
+}
