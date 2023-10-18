@@ -23,18 +23,6 @@ section {
   }
 }
 
-.login-box {
-  position: relative;
-  width: 600px;
-  height: 450px;
-  background: transparent;
-  border: 2px solid rgba(119, 92, 92, 0.5);
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(15px);
-}
 
 .login-box {
   position: relative;

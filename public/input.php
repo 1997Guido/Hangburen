@@ -28,6 +28,7 @@
                 <br>
                 <button type="submit" class="ibutton">Submit</button>
                 <a href="./login.php" class="return-btn">Retrun home</a>
+                <a href="./importer.php" class="return-btn">add a list</a>
             </form>
         </div>
     </section>
