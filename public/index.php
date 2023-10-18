@@ -14,13 +14,13 @@
         <a href="./login.php" class="return-btn"><img class="icon" src="https://img.icons8.com/material-outlined/24/000000/return.png" /></a>
         <div id="game-box" class="game-box">
             <div class="topcontainer">
-                <h1>Hangman</h1>
+                <h1>HangBuren</h1>
                 <div id="whoseTurn"></div>
                 <div id="untranslatedWord"></div>
             </div>
             <div class="middelconatiner">
                 <div class="dutchcontainer">
-                    <h2>Dutch stats</h2>
+                    <h2>Dutch player has had so many turns:</h2>
                     <div id="dutchPlayerTurns"></div>
                 </div>
                 <div id="hangman">
@@ -36,7 +36,7 @@
                     <div id="rightLeg" class="hide"></div>
                 </div>
                 <div class="germancontainer">
-                    <h2>German stats</h2>
+                    <h2>German player has had so many turns:</h2>
                     <div id="germanPlayerTurns"></div>
                 </div>
 
@@ -44,7 +44,7 @@
             <div id="wordToGuess"></div>
             <div id="currentAttempts"></div>
             <div id="keyboard"></div>
-            <button id="newGame" onclick="newGame()">New Game</button>
+            <button id="newGame" onclick="location.reload()">New Game</button>
         </div>
         <div id="end-box" class="hide"><a href="highscore.php"><button>Click here for highscores</button></a></div>
 
