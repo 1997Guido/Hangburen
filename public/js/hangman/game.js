@@ -232,10 +232,10 @@ function endGame() {
   .catch(error => {
     console.error('Error:', error);
   })
-  // .finally(() => {
-  //   // Redirect to highscore.php regardless of success or error
-  //   window.location.href = "highscore.php";
-  // });
+  .finally(() => {
+    // Redirect to highscore.php regardless of success or error
+    window.location.href = "highscore.php";
+  });
 }
 
 
@@ -296,8 +296,10 @@ function makeGuess(letter) {
   if (!maskedWord.includes("_")) {
     const endTime = Date.now();
     totalTime += (endTime - startTime) / 1000; // Convert to seconds
-    alert("You won! Next Turn!");
-    nextTurn();
+    setTimeout(() => {
+      alert("You won! Next Turn!");
+      nextTurn();
+  }, 100);  // 100 milliseconds delay
   }
 }
 function hideHangman() {
@@ -347,8 +349,10 @@ function showHangman(attempts) {
       break;
     case 10:
       document.getElementById("rightLeg").classList.remove("hide");
-      alert("You lost! Next Turn!");
-      nextTurn();
+      setTimeout(() => {
+        alert("You lost! Next Turn!");
+        nextTurn();
+    }, 100);  // 100 milliseconds delay    
       break;
     default:
       break;

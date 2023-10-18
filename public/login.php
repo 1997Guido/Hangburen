@@ -32,6 +32,9 @@
                             <p>Click <a href="./importer.php">here</a> to use a CSV importer to add multiple words to your game!</a></p>
                         </div>
                         <div class="register-link">
+                            <p>Click <a href="./highscore.php">here</a> to view the Leaderboard</a></p>
+                        </div>
+                        <div class="register-link">
                             <p><a href="./about.php">about</a></a></p>
                         </div>
             </form>

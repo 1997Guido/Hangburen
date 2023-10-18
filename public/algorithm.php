@@ -40,9 +40,9 @@ function calculatePlayerScore($playerData) {
  */
 function highScoreAlgorithm($difficulty, $timeInSeconds, $errors) {
     $difficultyFactors = [
-        'easy' => 0.5,
-        'medium' => 1,
-        'hard' => 2
+        'easy' => 1,
+        'medium' => 2,
+        'hard' => 4
     ];
 
     $B = 1000;  // Base Score granted for completing the word
