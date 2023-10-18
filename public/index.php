@@ -42,7 +42,7 @@
             <div id="keyboard"></div>
             <button id="newGame" onclick="newGame()">!New Game!</button>
         </div>
-        <div id="end-box" class="hide">Javascript needs to insert the winner and scores here after calculating</div>
+        <div id="end-box" class="hide"><a href="highscore.php"><button>Click here for highscores</button></a></div>
 
     </div>
 
