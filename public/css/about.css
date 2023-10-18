@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,400;1,200&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  z-index: 0;
+  overflow-x: hidden;
+}
+.screen-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  position: static;
+}
