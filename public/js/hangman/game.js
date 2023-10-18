@@ -21,8 +21,8 @@ let dutchPlayerData = {
   turnOneAttempts: 0,
   turnTwoAttempts: 0,
   turnThreeAttempts: 0,
-  turnOneFail: 0,
-  turnTwoFail: 0,
+  turnOneFail: false,
+  turnTwoFail: false,
   turnThreeFail: false,
 };
 let germanPlayerData = {
@@ -35,8 +35,8 @@ let germanPlayerData = {
   turnOneAttempts: 0,
   turnTwoAttempts: 0,
   turnThreeAttempts: 0,
-  turnOneFail: 0,
-  turnTwoFail: 0,
+  turnOneFail: false,
+  turnTwoFail: false,
   turnThreeFail: false,
 };
 
@@ -206,9 +206,26 @@ function endGame() {
       "Content-type": "application/json; charset=UTF-8"
     }
   }).then(response => response.json().then(data => {
-    console.log(data);
+    let germanPlayername = prompt("Enter German player name");
+    let dutchPlayername = prompt("Enter Dutch player name");
+    let scoreData = {
+      germanPlayername: germanPlayername,
+      dutchPlayername: dutchPlayername,
+      germanPlayerScore: data.germanPlayerScore,
+      dutchPlayerScore: data.dutchPlayerScore,
+    }
     hideGame();
-    }));
+    fetch("save_score.php", {
+      method: "POST",
+      body: JSON.stringify(scoreData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => response.json().then(data => {
+      console.log(data);
+    }
+  ));
+  }));
 }
 function hideGame() {
   document.getElementById("game-box").classList.add("hide");
