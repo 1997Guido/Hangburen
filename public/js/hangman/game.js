@@ -227,6 +227,22 @@ function generateKeyboard() {
   document.getElementById("keyboard").innerHTML = keyboardHtml;
 }
 
+function listenForKeyboardInput() {
+  document.addEventListener("keydown", function (event) {
+    const key = event.key.toUpperCase();
+    
+    if (key.length === 1 && key >= "A" && key <= "Z") {
+      makeGuess(key);
+      
+      const button = document.querySelector(`button[data-letter="${key}"]`);
+      if (button) {
+        button.classList.add("pressed");
+        setTimeout(() => button.classList.remove("pressed"), 200);
+      }
+    }
+  });
+}
+
 function makeGuess(letter) {
   let newMasked = "";
   let correctGuess = false;
