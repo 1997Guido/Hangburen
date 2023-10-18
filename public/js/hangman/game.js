@@ -205,35 +205,39 @@ function endGame() {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
-  }).then((response) =>
-    response.json().then((data) => {
-      let germanPlayername = prompt("Enter German player name");
-      let dutchPlayername = prompt("Enter Dutch player name");
-      let scoreData = {
-        germanPlayername: germanPlayername,
-        dutchPlayername: dutchPlayername,
-        germanPlayerScore: data.germanPlayerScore,
-        dutchPlayerScore: data.dutchPlayerScore,
-      };
-      hideGame();
-      fetch("save_score.php", {
-        method: "POST",
-        body: JSON.stringify(scoreData),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }).then((response) =>
-        response.json().then((data) => {
-          console.log(data);
-        })
-      );
-    })
-  );
+  })
+  .then(response => response.json())
+  .then(data => {
+    let germanPlayername = sessionStorage.getItem("germanPlayer");
+    let dutchPlayername = sessionStorage.getItem("dutchPlayer");
+    let scoreData = {
+      germanPlayername: germanPlayername,
+      dutchPlayername: dutchPlayername,
+      germanPlayerScore: data.germanPlayerScore,
+      dutchPlayerScore: data.dutchPlayerScore,
+    };
+
+    return fetch("save_score.php", {
+      method: "POST",
+      body: JSON.stringify(scoreData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  })
+  .finally(() => {
+    // Redirect to highscore.php regardless of success or error
+    window.location.href = "highscore.php";
+  });
 }
-function hideGame() {
-  document.getElementById("game-box").classList.add("hide");
-  document.getElementById("end-box").classList.remove("hide");
-}
+
 
 function generateKeyboard() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -292,8 +296,10 @@ function makeGuess(letter) {
   if (!maskedWord.includes("_")) {
     const endTime = Date.now();
     totalTime += (endTime - startTime) / 1000; // Convert to seconds
-    alert("You won! Next Turn!");
-    nextTurn();
+    setTimeout(() => {
+      alert("You won! Next Turn!");
+      nextTurn();
+  }, 100);  // 100 milliseconds delay
   }
 }
 function hideHangman() {
@@ -343,8 +349,10 @@ function showHangman(attempts) {
       break;
     case 10:
       document.getElementById("rightLeg").classList.remove("hide");
-      alert("You lost! Next Turn!");
-      nextTurn();
+      setTimeout(() => {
+        alert("You lost! Next Turn!");
+        nextTurn();
+    }, 100);  // 100 milliseconds delay    
       break;
     default:
       break;

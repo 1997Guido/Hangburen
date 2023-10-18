@@ -15,18 +15,24 @@
         <div class="login-box">
             <form method="post" name="loginCard" action="./index.php">
                 <h2>lets get started!<h2>
-                        <div class="input-box">
-                            <input type="username1" name="username" required>
-                            <label>player 1</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="username2" name="username" required>
-                            <label>player 2</label>
-                        </div>
+                <div class="input-box">
+                    <input type="text" id="username1" required>
+                    <label>Player 1 - German words</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="username2" required>
+                    <label>Player 2 - Dutch words</label>
+                </div>
 
-                        <button type="submit">Login</button>
+                <button type="button" onclick="storeNamesAndStartGame()">Start Game</button>
                         <div class="register-link">
                             <p>Click <a href="./input.php">here</a> to add words to your game!</a></p>
+                        </div>
+                        <div class="register-link">
+                            <p>Click <a href="./importer.php">here</a> to use a CSV importer to add multiple words to your game!</a></p>
+                        </div>
+                        <div class="register-link">
+                            <p>Click <a href="./highscore.php">here</a> to view the Leaderboard</a></p>
                         </div>
                         <div class="register-link">
                             <p><a href="./about.php">about</a></a></p>
@@ -37,3 +43,17 @@
 </body>
 
 </html>
+
+<script>
+    function storeNamesAndStartGame() {
+    const germanPlayer = document.getElementById("username1").value;
+    const dutchPlayer = document.getElementById("username2").value;
+
+    // Store names in sessionStorage
+    sessionStorage.setItem("germanPlayer", germanPlayer);
+    sessionStorage.setItem("dutchPlayer", dutchPlayer);
+
+    // Redirect to game page
+    window.location.href = "./index.php";
+}
+</script>
