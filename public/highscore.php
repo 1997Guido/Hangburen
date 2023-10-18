@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Scores</title>
+    <!-- Add DataTables CSS and JS files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 </head>
 <body>
 
@@ -22,11 +26,22 @@ try {
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        echo "<ul>";
+        echo "<table id='gameScores' class='display'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>Username</th>";
+        echo "<th>Score</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
         while ($row = $stmt->fetch()) {
-            echo "<li>" . $row['username'] . ": " . $row['score'] . "</li>";
+            echo "<tr>";
+            echo "<td>" . $row['username'] . "</td>";
+            echo "<td>" . $row['score'] . "</td>";
+            echo "</tr>";
         }
-        echo "</ul>";
+        echo "</tbody>";
+        echo "</table>";
     } else {
         echo "No scores found in the database.";
     }
@@ -37,6 +52,12 @@ try {
 
 $conn = null;
 ?>
+
+<script>
+$(document).ready(function() {
+    $('#gameScores').DataTable();
+});
+</script>
 
 </body>
 </html>
