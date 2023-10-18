@@ -44,14 +44,31 @@
             <div id="wordToGuess"></div>
             <div id="currentAttempts"></div>
             <div id="keyboard"></div>
-            <button id="newGame" onclick="location.reload()">New Game</button>
+            <button id="newGame" onclick="startNewGame()">New Game</button>
         </div>
-        <div id="end-box" class="hide"><a href="highscore.php"><button>Click here for highscores</button></a></div>
+        <!-- <div id="end-box" class="hide"><a href="highscore.php"><button>Click here for highscores</button></a></div> -->
 
     </div>
 
+    <script>
+        window.onload = function() {
+            // Check if the sessionStorage keys for player names (or whatever key you use) are not set
+            if (!sessionStorage.getItem('germanPlayer') || !sessionStorage.getItem('dutchPlayer')) {
+                // Redirect to login.php
+                window.location.href = './login.php';
+            }
+        }
+    </script>
 
 </body>
 <script src="js/hangman/game.js"></script>
+<script>
+    function startNewGame() {
+    // Clear sessionStorage
+    sessionStorage.clear();
 
+    // Redirect to login.php
+    window.location.href = "./login.php";
+}
+</script>
 </html>

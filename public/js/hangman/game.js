@@ -205,35 +205,39 @@ function endGame() {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
-  }).then((response) =>
-    response.json().then((data) => {
-      let germanPlayername = prompt("Enter German player name");
-      let dutchPlayername = prompt("Enter Dutch player name");
-      let scoreData = {
-        germanPlayername: germanPlayername,
-        dutchPlayername: dutchPlayername,
-        germanPlayerScore: data.germanPlayerScore,
-        dutchPlayerScore: data.dutchPlayerScore,
-      };
-      hideGame();
-      fetch("save_score.php", {
-        method: "POST",
-        body: JSON.stringify(scoreData),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }).then((response) =>
-        response.json().then((data) => {
-          console.log(data);
-        })
-      );
-    })
-  );
+  })
+  .then(response => response.json())
+  .then(data => {
+    let germanPlayername = sessionStorage.getItem("germanPlayer");
+    let dutchPlayername = sessionStorage.getItem("dutchPlayer");
+    let scoreData = {
+      germanPlayername: germanPlayername,
+      dutchPlayername: dutchPlayername,
+      germanPlayerScore: data.germanPlayerScore,
+      dutchPlayerScore: data.dutchPlayerScore,
+    };
+
+    return fetch("save_score.php", {
+      method: "POST",
+      body: JSON.stringify(scoreData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  })
+  // .finally(() => {
+  //   // Redirect to highscore.php regardless of success or error
+  //   window.location.href = "highscore.php";
+  // });
 }
-function hideGame() {
-  document.getElementById("game-box").classList.add("hide");
-  document.getElementById("end-box").classList.remove("hide");
-}
+
 
 function generateKeyboard() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
