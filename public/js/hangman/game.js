@@ -227,6 +227,11 @@ function generateKeyboard() {
   document.getElementById("keyboard").innerHTML = keyboardHtml;
 }
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  newGame();
+  listenForKeyboardInput();
+});
+
 function listenForKeyboardInput() {
   document.addEventListener("keydown", function (event) {
     const key = event.key.toUpperCase();
